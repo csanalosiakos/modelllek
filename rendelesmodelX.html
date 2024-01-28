@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rendelés</title>
+    <link rel="icon" href="https://png.pngtree.com/png-clipart/20210823/ourmid/pngtree-steering-wheel-4-png-image_3826235.jpg" type="image/icon type">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        @import url(https://fonts.googleapis.com/css?family=Merriweather);
+        $red: #e74c3c;
+
+        *,
+        *:before,
+        *:after {
+            box-sizing: border-box;
+        }
+
+        html, body {
+            background: #ffffff;
+            font-family: 'Merriweather', sans-serif;
+            padding: 1em;
+        }
+
+        h1 {
+            text-align: center;
+            color: #a8a8a8;
+            text-shadow: 1px 1px 0 rgba(255, 255, 255, 1);
+        }
+
+        form {
+            max-width: 600px;
+            text-align: center;
+            margin: 20px auto;
+        }
+
+        input, textarea {
+            border: 0;
+            outline: 0;
+            padding: 1em;
+            border-radius: 8px;
+            display: block;
+            width: 100%;
+            margin-top: 1em;
+            font-family: 'Merriweather', sans-serif;
+            box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+            resize: none;
+            background-color: #f1f1f1;
+        }
+
+        input:focus,
+        textarea:focus {
+            box-shadow: 0 0px 2px rgba(231, 76, 60, 1);
+        }
+
+        #input-submit {
+            color: white;
+            background: #e74c3c;
+            cursor: pointer;
+        }
+
+        #input-submit:hover {
+            box-shadow: 0 1px 1px 1px rgba(170, 170, 170, 0.6);
+        }
+
+        textarea {
+            height: 126px;
+            max-width: 100%;
+            width: 100%;
+            box-sizing: border-box;
+            background-color: #f1f1f1;
+        }
+
+        .half {
+            float: left;
+            width: 48%;
+            margin-bottom: 1em;
+        }
+
+        .right {
+            width: 50%;
+        }
+
+        .left {
+            margin-right: 2%;
+        }
+
+        @media (max-width: 480px) {
+            .half {
+                width: 100%;
+                float: none;
+                margin-bottom: 0;
+            }
+        }
+
+        .cf:before,
+        .cf:after {
+            content: " ";
+            display: table;
+        }
+
+        .cf:after {
+            clear: both;
+        }
+
+        input[type="tel"] {
+           width: 100%;
+           padding: 1em;
+           border: 0;
+           outline: 0;
+           border-radius: 8px;
+           margin-top: 1em;
+           font-family: 'Merriweather', sans-serif;
+           box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+           resize: none;
+        }
+
+        input[type="tel"]:focus {
+           box-shadow: 0 0px 2px rgba(231, 76, 60, 1);
+        }
+
+        #input-message {
+            max-width: calc(95% - 1em);
+            margin-top: 1em;
+            box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+            float: right;
+            margin-right: 10px;
+            margin-left: 100px;
+            margin-bottom: 10px;
+            width: 100%;
+            height: 212px;
+        }
+
+        #input-message:focus {
+            box-shadow: 0 0px 2px rgba(231, 76, 60, 1);
+        }
+
+        .car-selection {
+            text-align: center;
+        }
+
+        .btn-container {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .tds-btn {
+            height: 65px;
+            width: 65px;
+            border: 4px solid transparent;
+            outline: none;
+            cursor: pointer;
+            border-radius: 50%;
+            margin-bottom: 15px;
+            background-color: #FFFFFF;
+            color: #5C5E62;
+            font-weight: bold;
+            text-align: center;
+            overflow: hidden;
+            position: relative;
+            transition: border-color 0.3s ease-in-out;
+            padding: 0;
+        }
+
+        .tds-btn img {
+            min-width: 80%;
+            width: 80%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .selectedButton {
+            border-color: blue;
+            color: black;
+        }
+
+        .car-model img {
+            width: 45%;
+            height: auto;
+            margin-top: 10px; /* added margin */
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Model X</h1>
+    <center>
+        <div class="car-selection">
+            <div class="img-container">
+                <div class="car-model" id="carImage">
+                    <img src="https://static-assets.tesla.com/configurator/compositor?context=design_studio_2&options=$MTX18,$PPSW,$WX00,$IBE00&view=FRONT34&model=mx&size=1920&bkba_opt=1&crop=1300,600,300,230&" alt="Model S">
+                </div>
+                <center><h2>Fényezés:</h2></center>
+            </div>
+            <div class="btn-container">
+                <button class="tds-btn models tds-btn tds-btn--large selectedButton" data-model="ModelS" data-section="carSection" onclick="showImage('ModelS')">
+                    <img src="https://digitalassets.tesla.com/image/upload/f_auto,q_auto/prod/coin/static_assets/MODEL3/UI/Paint_White.png" alt="Model S">
+                </button>
+                <button class="tds-btn models tds-btn tds-btn--large" data-model="Model3" data-section="carSection" onclick="showImage('Model3')">
+                    <img src="https://digitalassets.tesla.com/image/upload/f_auto,q_auto/prod/coin/static_assets/MODEL3_/UI/Paint_StealthGrey.png" alt="Model 3">
+                </button>
+                <button class="tds-btn models tds-btn tds-btn--large" data-model="ModelX" data-section="carSection" onclick="showImage('ModelX')">
+                    <img src="https://digitalassets.tesla.com/image/upload/f_auto,q_auto/prod/coin/static_assets/MODEL3/UI/Paint_Black.png" alt="Model X">
+                </button>
+                <button class="tds-btn models tds-btn tds-btn--large" data-model="ModelY" data-section="carSection" onclick="showImage('ModelY')">
+                    <img src="https://digitalassets.tesla.com/image/upload/f_auto,q_auto/prod/coin/static_assets/MODEL3/UI/Paint_Blue.png" alt="Model Y">
+                </button>
+                <button class="tds-btn models tds-btn tds-btn--large" data-model="ModelZ" data-section="carSection" onclick="showImage('ModelZ')">
+                    <img src="https://digitalassets.tesla.com/image/upload/f_auto,q_auto/prod/coin/static_assets/MODELS/UI/Red_Paint_R2.png" alt="Model Z">
+                </button>
+            </div>
+        </div>
+    </center>
+    <br>
+    <center>35 000 000 HUF</center>
+    <form class="cf">
+        <div class="half left cf">
+            <input type="text" id="input-name" placeholder="Keresztnév">
+            <input type="text" id="input-email" placeholder="Vezetéknév">
+            <input type="text" id="input-subject" placeholder="E-mail">
+            <input type="tel" id="input-phone" placeholder="Telefonszám">
+        </div>
+        <div class="half right cf">
+            <textarea name="message" type="text" id="input-message" placeholder="Megjegyzés"></textarea>
+        </div>
+        <input type="submit" value="Rendelés leadása" id="input-submit">
+    </form>
+
+    <script>
+        function showImage(model) {
+            var carImage = document.getElementById("carImage");
+            var imageSource;
+
+            switch (model) {
+                case 'ModelS':
+                    imageSource = 'https://static-assets.tesla.com/configurator/compositor?context=design_studio_2&options=$MTX18,$PPSW,$WX00,$IBE00&view=FRONT34&model=mx&size=1920&bkba_opt=1&crop=1300,600,300,230&';
+                    break;
+                case 'Model3':
+                    imageSource = 'https://static-assets.tesla.com/configurator/compositor?context=design_studio_2&options=$MTX18,$PN01,$WX00,$IBE00&view=FRONT34&model=mx&size=1920&bkba_opt=1&crop=1300,600,300,230&';
+                    break;
+                case 'ModelX':
+                    imageSource = 'https://static-assets.tesla.com/configurator/compositor?context=design_studio_2&options=$MTX18,$PBSB,$WX00,$IBE00&view=FRONT34&model=mx&size=1920&bkba_opt=1&crop=1300,600,300,230&';
+                    break;
+                case 'ModelY':
+                    imageSource = 'https://static-assets.tesla.com/configurator/compositor?context=design_studio_2&options=$MTX18,$PPSB,$WX00,$IBE00&view=FRONT34&model=mx&size=1920&bkba_opt=1&crop=1300,600,300,230&';
+                    break;
+                case 'ModelZ':
+                    imageSource = 'https://static-assets.tesla.com/configurator/compositor?context=design_studio_2&options=$MTX18,$PR01,$WX00,$IBE00&view=FRONT34&model=mx&size=1920&bkba_opt=1&crop=1300,600,300,230&';
+                    break;
+                }
+
+carImage.innerHTML = '<img src="' + imageSource + '" alt="' + model + '">';
+
+var buttons = document.querySelectorAll(".models");
+buttons.forEach(function (btn) {
+    btn.classList.remove("selectedButton");
+});
+
+event.currentTarget.classList.add("selectedButton");
+}
+    </script>
+</body>
+
+</html>
